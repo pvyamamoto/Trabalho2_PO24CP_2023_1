@@ -25,6 +25,26 @@ public class CarroPasseio extends VeiculoMotorizado implements IPVA{
         return desenho;
     }
 
+    public boolean mover() {
+        if((this.getCombustivel() >= 0.55) && (this.isIpva())){
+            for(int i = 0; i<this.getQuantidadeRodas(); i++){
+                if(!this.getRodas()[i].isCalibragemPneu()) {
+                    return false;
+                }
+            }
+            String[] desenhoAux = this.getDesenho();
+            for(int i = 0; i<this.desenho.length; i++){
+                desenhoAux[i] = "     "+desenhoAux[i];
+            }
+            this.setCombustivel(this.getCombustivel() - 0.75);
+            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + movimento);
+
+            this.setDesenho(desenhoAux);
+            return true;
+        }else
+            return false;
+    }
+
     public double calculaIpva() {
         return base*cte_passeio;
     }

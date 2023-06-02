@@ -1,19 +1,33 @@
 public class CarroEsportivo extends VeiculoMotorizado implements IPVA{
 
 
-    private String[] desenho = new String[4];
     private final int quantidadeRodas = 4;
     private final int movimento = 10;
 
     public CarroEsportivo(int id) {
 
-        super(id);
+        super(id,7);
     }
 
     public boolean mover(){
+        if((this.getCombustivel() >= 0.55) && (this.isIpva())){
+            for(int i = 0; i<this.getQuantidadeRodas(); i++){
+                if(!this.getRodas()[i].isCalibragemPneu()) {
+                    return false;
+                }
+            }
+            String[] desenhoAux = this.getDesenho();
+            for(int i = 0; i<this.desenho.length; i++){
+                desenhoAux[i] = "          "+desenhoAux[i];
+            }
+            this.setCombustivel(this.getCombustivel() - 2.3);
+            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + movimento);
 
-        return false;
-
+            this.setDesenho(desenhoAux);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public String[] inicializaDesenho(){
@@ -47,5 +61,9 @@ public class CarroEsportivo extends VeiculoMotorizado implements IPVA{
 
     public void setDesenho(String[] desenho) {
         this.desenho = desenho;
+    }
+
+    public int getTamanhoDesenho() {
+        return tamanhoDesenho;
     }
 }

@@ -16,14 +16,11 @@ public class Simulador implements Serializable{
 
     //inclui um veiculo no array de veiculos
     public void incluirVeiculo(){
-        Veiculo v = new Veiculo(nextId()) {
-            @Override
-            public boolean mover() {
-                return false;
-            }
-        };
-        this.setVeiculos(v, this.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
-        this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
+
+
+//        Veiculo v = new Veiculo(nextId(),maxVeiculos);
+//        this.setVeiculos(v, this.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
+//        this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
     }
 
     public void incluirCarroP(){

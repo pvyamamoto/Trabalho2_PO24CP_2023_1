@@ -2,7 +2,7 @@ import java.io.Serializable;
 
 public class Simulador implements Serializable{
     //declaracao de variaveis
-    private Veiculo veiculos[] = new Veiculo[this.getMaxVeiculos()];
+    private Veiculo[] veiculos = new Veiculo[this.getMaxVeiculos()];
     private int qtidVeiculos;
     private int id = 0;
     private final int maxVeiculos = 20;
@@ -16,7 +16,12 @@ public class Simulador implements Serializable{
 
     //inclui um veiculo no array de veiculos
     public void incluirVeiculo(){
-        Veiculo v = new Veiculo(nextId());
+        Veiculo v = new Veiculo(nextId()) {
+            @Override
+            public boolean mover() {
+                return false;
+            }
+        };
         this.setVeiculos(v, this.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
         this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
     }
@@ -169,6 +174,16 @@ public class Simulador implements Serializable{
         }else{
             this.qtidVeiculos = qtidVeiculos;
         }
+    }
+
+    //getter da variavel veiculos
+    public Veiculo[] getVeiculos(){
+        return veiculos;
+    }
+
+    //setter da variavel veiculos
+    public void setVeiculos(Veiculo[] veiculos){
+        this.veiculos = veiculos;
     }
 
 

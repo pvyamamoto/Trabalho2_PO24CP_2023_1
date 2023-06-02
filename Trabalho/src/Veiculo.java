@@ -4,17 +4,20 @@ import java.util.Random;
 public abstract class Veiculo implements Serializable{
     //declaracao de variaveis
     private int id = 0;
+    private String[] desenho;
+
     private int distanciaPercorrida;
     private int quantidadeRodas;
     private Roda[] rodas;
     private String[] desenho;
 
     //construtor da classe Veiculo
-    public Veiculo(int id){
-
+    public Veiculo(int id, int tamanhoDesenho){
+        this.desenho = new String[tamanhoDesenho];
         this.setId(id); //gera o prox ID
         this.setDistanciaPercorrida(0);
         this.setRodas();
+
     }
 
     public abstract String[] inicializaDesenho();
@@ -129,5 +132,13 @@ public abstract class Veiculo implements Serializable{
         for(int i=0;i<this.getQuantidadeRodas();i++){
             this.rodas[i] = new Roda();
         }
+    }
+
+    public String[] getDesenho() {
+        return desenho;
+    }
+
+    public void setDesenho(String[] desenho) {
+        this.desenho = desenho;
     }
 }

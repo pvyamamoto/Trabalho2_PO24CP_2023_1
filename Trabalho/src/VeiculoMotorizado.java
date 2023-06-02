@@ -1,12 +1,14 @@
 import java.util.Random;
 
-public class VeiculoMotorizado extends Veiculo{
+public abstract class VeiculoMotorizado extends Veiculo{
+
+    private String[] desenho = new String[4];
     private double combustivel = 2.5;
 
     private boolean ipva;
 
-    public VeiculoMotorizado(int id) {
-        super(id);
+    public VeiculoMotorizado(int id, int tamanhoDesenho) {
+        super(id,tamanhoDesenho);
 
         Random rd = new Random(); // gerar ipva aleatorio
 

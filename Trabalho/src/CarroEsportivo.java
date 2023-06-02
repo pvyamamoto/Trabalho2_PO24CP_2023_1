@@ -19,11 +19,10 @@ public class CarroEsportivo extends VeiculoMotorizado implements IPVA{
     public String[] inicializaDesenho(){
         String[] desenho = new String[4];
 
-        desenho[0] = "       __\n\n";
-        desenho[1] = "     ~( @\\ \\\n\n";
-        desenho[2] = "  _____]_[_/_>____\n\n";
-        desenho[3] = " /  __ \\<>  |  __ \\\n\n";
-        desenho[4] = " /  __ \\<>  |  __ \\\n\n";
+        desenho[0] = "       __\n";
+        desenho[1] = "     ~( @\\ \\\n";
+        desenho[2] = "  _____]_[_/_>____\n";
+        desenho[3] = " /  __ \\<>  |  __ \\\n";
         desenho[5] = "=\\_/__\\_\\___|_/__\\_D\n";
         desenho[6] = "   (__)       (__)    \n";
 

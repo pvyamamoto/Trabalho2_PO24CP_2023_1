@@ -54,7 +54,7 @@ public abstract class Veiculo implements Serializable{
                     this.calibraPneu(i);
                 }
             }
-            System.out.println("Todos os pneus do carro " + (id+1) + " foram calibrados\n");
+            System.out.println("Todos os pneus do carro " + (this.id+1) + " foram calibrados\n");
         }
     }
     public void calibraPneu(int idP) {

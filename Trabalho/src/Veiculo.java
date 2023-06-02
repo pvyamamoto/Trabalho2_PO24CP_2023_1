@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.util.Random;
 
-public class Veiculo implements Serializable{
+public abstract class Veiculo implements Serializable{
     //declaracao de variaveis
     private int id = 0;
     private int distanciaPercorrida;
@@ -15,6 +15,14 @@ public class Veiculo implements Serializable{
         this.setDistanciaPercorrida(0);
         this.setRodas();
     }
+
+    public String[] inicializaDesenho(){
+        return new String[0];
+    }
+
+
+
+    public abstract boolean mover();
 
     //move o veiculo 5 blocos
 //    public boolean mover(){
@@ -38,11 +46,7 @@ public class Veiculo implements Serializable{
 //    }
 
     //printa o desenho do veiculo
-//    public void geraDesenho() {
-//        for(int i=0;i<4;i++){
-//            System.out.print(this.getDesenho()[i]);
-//        }
-//    }
+    public void geraDesenho() {}
 
     //sobrecarga da funcao toString na classe veiculo, onde printa todas as informacoes sobre o veiculo
     public String toString(){

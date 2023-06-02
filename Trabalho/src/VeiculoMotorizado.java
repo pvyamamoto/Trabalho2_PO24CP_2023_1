@@ -3,7 +3,7 @@ import java.util.Random;
 public class VeiculoMotorizado extends Veiculo{
 
     private String[] desenho = new String[4];
-    private double gasolina = 2.5;
+    private double combustivel = 2.5;
 
     private boolean ipva;
 
@@ -16,11 +16,23 @@ public class VeiculoMotorizado extends Veiculo{
 
     }
 
+    public boolean mover() {
+        return false;
+    }
+
     public boolean isIpva() {
         return ipva;
     }
 
     public void setIpva(boolean ipva) {
         this.ipva = ipva;
+    }
+
+    public double getCombustivel() {
+        return combustivel;
+    }
+
+    public void setCombustivel(double combustivel) {
+        this.combustivel = combustivel;
     }
 }

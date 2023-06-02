@@ -35,7 +35,7 @@ public class UsaSimulador{
                 case 1:
                     if (simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
                         simulador.incluirVeiculo();
-                        System.out.println("\nO veiculo " + simulador.getVeiculos()[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado\n");
+                        System.out.println("\nO veiculo " + simulador.veiculos[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado\n");
                     } else {
                         System.out.println("\nQuantidade maxima de veiculos atingida!\n");
                     }
@@ -78,7 +78,7 @@ public class UsaSimulador{
                 case 9:
                     System.out.println("\nOs carros sao os seguintes:\n");
                     for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
-                        System.out.println(simulador.getVeiculos()[i].toString());
+                        System.out.println(simulador.veiculos[i].toString());
                     }
                     break;
                 case 10:

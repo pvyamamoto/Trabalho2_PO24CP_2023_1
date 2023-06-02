@@ -5,8 +5,9 @@ public abstract class Veiculo implements Serializable{
     //declaracao de variaveis
     private int id = 0;
     private int distanciaPercorrida;
-    private static final int quantidadeRodas = 4;
-    private Roda[] rodas = new Roda[getQuantidadeRodas()];
+    private int quantidadeRodas;
+    private Roda[] rodas;
+    private String[] desenho;
 
     //construtor da classe Veiculo
     public Veiculo(int id){
@@ -16,11 +17,7 @@ public abstract class Veiculo implements Serializable{
         this.setRodas();
     }
 
-    public String[] inicializaDesenho(){
-        return new String[0];
-    }
-
-
+    public abstract String[] inicializaDesenho();
 
     public abstract boolean mover();
 
@@ -46,7 +43,39 @@ public abstract class Veiculo implements Serializable{
 //    }
 
     //printa o desenho do veiculo
-    public void geraDesenho() {}
+    public abstract void geraDesenho();
+
+    public void calibraPneu(){
+        if(this.id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else{
+            for (int i = 1; i <= this.getQuantidadeRodas(); i++) {
+                if(!this.getRodas()[i-1].isCalibragemPneu()) {
+                    this.calibraPneu(i);
+                }
+            }
+            System.out.println("Todos os pneus do carro " + (id+1) + " foram calibrados\n");
+        }
+    }
+    public void calibraPneu(int idP) {
+        if(this.id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else if(this.getQuantidadeRodas() == 4) {
+            if(idP != 1 && idP != 2 && idP != 3 && idP != 4)
+                System.out.println("Pneu Inexistente! Tente novamente\n");
+            else{
+                this.getRodas()[idP - 1].setCalibragemPneu(true);
+                System.out.println("O pneu " + idP + ", do carro " + (this.id+1) + " esta calibrado!");
+            }
+        }else if(this.getQuantidadeRodas() == 2){
+            if(idP != 1 && idP != 2)
+                System.out.println("Pneu Inexistente! Tente novamente\n");
+            else{
+                this.getRodas()[idP - 1].setCalibragemPneu(true);
+                System.out.println("O pneu " + idP + ", do carro " + (this.id+1) + " esta calibrado!");
+            }
+        }
+    }
 
     //sobrecarga da funcao toString na classe veiculo, onde printa todas as informacoes sobre o veiculo
     public String toString(){
@@ -62,7 +91,7 @@ public abstract class Veiculo implements Serializable{
 
 //        aux += "\nCombustivel no tanque: " +this.getCombustivel()+"L"+ "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos\n";
 
-        return aux;
+//        return aux;
     }
 
     //getter da variavel id

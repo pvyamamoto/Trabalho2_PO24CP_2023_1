@@ -17,7 +17,6 @@ public class Simulador implements Serializable{
     //inclui um veiculo no array de veiculos
     public void incluirVeiculo(){
         Veiculo v = new Veiculo(nextId()) {
-            @Override
             public boolean mover() {
                 return false;
             }
@@ -34,50 +33,12 @@ public class Simulador implements Serializable{
 
     }
 
-    public void inclueirMotocicleta(){
+    public void incluirMotocicleta(){
 
     }
 
     public void incluirBicicleta(){
 
-    }
-
-    //calibra um pneu de um veiculo especifico
-    public void calibraPneu(int idC,int idP){
-        if(idC == -1){
-            System.out.println("Veiculo inexistente! Tente novamente\n");
-        }else if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
-            System.out.println("Pneu Inexistente! Tente novamente\n");
-        }else{
-            this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(true);
-            System.out.println("O pneu " + idP + ", do carro " + (idC+1) + " esta calibrado!");
-        }
-    }
-
-    //calibra os pneus de um veiculos
-    public void calibraPneu(int id){
-        if(id == -1){
-            System.out.println("Veiculo inexistente! Tente novamente\n");
-        }else{
-            for (int i = 1; i <= this.veiculos[id].getQuantidadeRodas(); i++) {
-                if(!this.veiculos[id].getRodas()[i-1].isCalibragemPneu()) {
-                    this.calibraPneu(id, i);
-                }
-            }
-            System.out.println("Todos os pneus do carro " + (id+1) + " foram calibrados\n");
-        }
-    }
-
-    //calibra todos os pneus de todos os veiculos
-    public void calibraPneu() {
-        for (int i = 0; i < this.getQtidVeiculos(); i++) {
-            for (int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++) {
-                if(!this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
-                    this.calibraPneu(i, j);
-                }
-            }
-        }
-        System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
     }
 
     //paga o IPVA de um veiculo especifico

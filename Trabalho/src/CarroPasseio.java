@@ -1,13 +1,6 @@
 public class CarroPasseio extends VeiculoMotorizado implements IPVA{
-
-    private String[] desenho = new String[4];
-    private final int quantidadeRodas = 4;
-    private final int movimento = 5;
-
-
-
     public CarroPasseio(int id) {
-        super(id);
+        super(id, 4, 4, 5);
         calculaIpva();
         this.setDesenho(inicializaDesenho()); // desenho do carro
 
@@ -33,11 +26,11 @@ public class CarroPasseio extends VeiculoMotorizado implements IPVA{
                 }
             }
             String[] desenhoAux = this.getDesenho();
-            for(int i = 0; i<this.desenho.length; i++){
+            for(int i = 0; i<this.getDesenho().length; i++){
                 desenhoAux[i] = "     "+desenhoAux[i];
             }
             this.setCombustivel(this.getCombustivel() - 0.75);
-            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + movimento);
+            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + this.getMovimento());
 
             this.setDesenho(desenhoAux);
             return true;
@@ -45,15 +38,13 @@ public class CarroPasseio extends VeiculoMotorizado implements IPVA{
             return false;
     }
 
+    public void geraDesenho(){
+        for(int i = 0;i<this.getDesenho().length;i++){
+            System.out.println(this.getDesenho()[i]);
+        }
+    }
+
     public double calculaIpva() {
         return base*cte_passeio;
-    }
-
-    public String[] getDesenho() {
-        return desenho;
-    }
-
-    public void setDesenho(String[] desenho) {
-        this.desenho = desenho;
     }
 }

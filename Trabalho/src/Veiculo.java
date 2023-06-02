@@ -5,19 +5,19 @@ public abstract class Veiculo implements Serializable{
     //declaracao de variaveis
     private int id = 0;
     private String[] desenho;
-
     private int distanciaPercorrida;
     private int quantidadeRodas;
     private Roda[] rodas;
-    private String[] desenho;
+    private int movimento;
 
     //construtor da classe Veiculo
-    public Veiculo(int id, int tamanhoDesenho){
+    public Veiculo(int id, int tamanhoDesenho, int qntRodas, int mov){
         this.desenho = new String[tamanhoDesenho];
         this.setId(id); //gera o prox ID
         this.setDistanciaPercorrida(0);
         this.setRodas();
-
+        this.setQuantidadeRodas(qntRodas);
+        this.setMovimento(mov);
     }
 
     public abstract String[] inicializaDesenho();
@@ -94,7 +94,7 @@ public abstract class Veiculo implements Serializable{
 
 //        aux += "\nCombustivel no tanque: " +this.getCombustivel()+"L"+ "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos\n";
 
-//        return aux;
+        return aux;
     }
 
     //getter da variavel id
@@ -140,5 +140,17 @@ public abstract class Veiculo implements Serializable{
 
     public void setDesenho(String[] desenho) {
         this.desenho = desenho;
+    }
+
+    public void setQuantidadeRodas(int quantidadeRodas) {
+        this.quantidadeRodas = quantidadeRodas;
+    }
+
+    public int getMovimento() {
+        return movimento;
+    }
+
+    public void setMovimento(int movimento) {
+        this.movimento = movimento;
     }
 }

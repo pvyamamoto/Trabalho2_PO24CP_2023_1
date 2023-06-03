@@ -1,9 +1,7 @@
 public class Motocicleta extends VeiculoMotorizado implements IPVA{
 
-    private final int quantidadeRodas = 2;
-    private final int movimento = 3;
     public Motocicleta(int id) {
-        super(id);
+        super(id, 2, 2, 3);
     }
 
     public String[] inicializaDesenho(){
@@ -16,6 +14,12 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
         return desenho;
     }
 
+    public void geraDesenho(){
+        for(int i=0;i<this.getDesenho().length;i++){
+            System.out.print(this.getDesenho()[i]);
+        }
+    }
+
     public boolean mover(){
         if((this.getCombustivel() >= 0.55) && (this.isIpva())){
             for(int i = 0; i<this.getQuantidadeRodas(); i++){
@@ -24,11 +28,11 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
                 }
             }
             String[] desenhoAux = this.getDesenho();
-            for(int i = 0; i<this.desenho.length; i++){
+            for(int i = 0; i<this.getDesenho().length; i++){
                 desenhoAux[i] = "          "+desenhoAux[i];
             }
             this.setCombustivel(this.getCombustivel() - 0.25);
-            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + movimento);
+            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + this.getMovimento());
 
             this.setDesenho(desenhoAux);
             return true;

@@ -20,7 +20,14 @@ public class Bicicleta extends Veiculo{
         }
     }
 
-    public boolean mover() {
+    public boolean mover(){
+
+        for(int i = 0; i<this.getQuantidadeRodas(); i++){
+            if(!this.getRodas()[i].isCalibragemPneu()) {
+                return false;
+            }
+        }
+
         String[] desenhoAux = this.getDesenho();
         for(int i = 0; i<this.getDesenho().length; i++){
             desenhoAux[i] = "  "+desenhoAux[i];

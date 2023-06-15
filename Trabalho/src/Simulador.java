@@ -14,29 +14,35 @@ public class Simulador implements Serializable{
         return id+=1;
     }//adiciona +1 ao id
 
-    //inclui um veiculo no array de veiculos
-    public void incluirVeiculo(){
-
-
-//        Veiculo v = new Veiculo(nextId(),maxVeiculos);
-//        this.setVeiculos(v, this.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
-//        this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
-    }
-
+    //inclui um carro passeio no array de veiculos
     public void incluirCarroP(){
-
+        CarroPasseio cp = new CarroPasseio(nextId());
+        this.setVeiculos(cp, this.getQtidVeiculos());
+        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
     }
+
+    //inclui um carro esportivo no array de veiculos
 
     public void incluirCarroE(){
-
+        CarroPasseio ce = new CarroPasseio(nextId());
+        this.setVeiculos(ce, this.getQtidVeiculos());
+        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
     }
+    //inclui uma motocicleta no array de veiculos
 
     public void inclueirMotocicleta(){
 
+        CarroPasseio mt = new CarroPasseio(nextId());
+        this.setVeiculos(mt, this.getQtidVeiculos());
+        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
     }
 
+    //inclui uma bicicleta no array de veiculos
     public void incluirBicicleta(){
 
+        CarroPasseio b = new CarroPasseio(nextId());
+        this.setVeiculos(b, this.getQtidVeiculos());
+        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
     }
 
     //calibra um pneu de um veiculo especifico
@@ -82,14 +88,22 @@ public class Simulador implements Serializable{
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
-            this.veiculos[this.getVeiculoPos(id)].setIpva(true);
-            System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
+            if( this.veiculos[id] instanceof Bicicleta){
+                System.out.println("Bicicleta não possui IPVA");
+            }else{
+                this.veiculos[this.getVeiculoPos(id)].setIpva(true);
+                System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
+            }
         }
     }
     //paga o IPVA de todos os veiculos
     public void pagaIPVA(){
         for(int i =0;i<this.getQtidVeiculos();i++){
-            this.veiculos[i].setIpva(true);
+            if( this.veiculos[id] instanceof Bicicleta){
+
+            }else{
+                this.veiculos[i].setIpva(true);
+            }
         }
     }
 
@@ -112,9 +126,12 @@ public class Simulador implements Serializable{
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
-            this.veiculos[id].setCombustivel(this.veiculos[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
-            System.out.printf("\nO veiculo com o id: " + (id+1) + " esta com  %.2f L de combustivel no tanque\n",(float) this.veiculos[id].getCombustivel());
+            if(this.veiculos[id] instanceof Bicicleta){
 
+            }else{
+                this.veiculos[id].getClass().setCombustivel(this.veiculos[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
+                System.out.printf("\nO veiculo com o id: " + (id+1) + " esta com  %.2f L de combustivel no tanque\n",(float) this.veiculos[id].getCombustivel());
+            }
         }
     }
 

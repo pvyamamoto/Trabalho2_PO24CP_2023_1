@@ -2,7 +2,6 @@ import java.util.Random;
 
 public abstract class VeiculoMotorizado extends Veiculo{
     private double combustivel = 2.5;
-
     private boolean ipva;
 
     public VeiculoMotorizado(int id, int tamanhoDesenho, int qntRodas, int mov) {
@@ -13,6 +12,12 @@ public abstract class VeiculoMotorizado extends Veiculo{
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
     }
 
+    public String toString(){
+        String aux;
+        aux = "\nCombustivel no tanque: " +this.getCombustivel()+"L";
+
+        return aux;
+    }
     public boolean mover() {
         return false;
     }

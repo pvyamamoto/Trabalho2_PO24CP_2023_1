@@ -2,7 +2,7 @@ public class Bicicleta extends Veiculo{
 
     public Bicicleta(int id){
         super(id, 3, 2, 2);
-
+        this.setDesenho(inicializaDesenho());
     }
     public String[] inicializaDesenho(){
         String[] desenho = new String[3];
@@ -21,7 +21,6 @@ public class Bicicleta extends Veiculo{
     }
 
     public boolean mover(){
-
         for(int i = 0; i<this.getQuantidadeRodas(); i++){
             if(!this.getRodas()[i].isCalibragemPneu()) {
                 return false;

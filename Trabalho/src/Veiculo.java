@@ -24,27 +24,6 @@ public abstract class Veiculo implements Serializable{
 
     public abstract boolean mover();
 
-    //move o veiculo 5 blocos
-//    public boolean mover(){
-//        if((this.getCombustivel() >= 0.55) && (this.isIpva())){
-//            for(int i = 0; i<this.getQuantidadeRodas(); i++){
-//                if(!this.getRodas()[i].isCalibragemPneu()) {
-//                    return false;
-//                }
-//            }
-//            String[] desenhoAux = this.getDesenho();
-//            for(int i = 0; i<this.desenho.length; i++){
-//                desenhoAux[i] = "     "+desenhoAux[i];
-//            }
-//            this.setCombustivel(this.getCombustivel() - 0.55);
-//            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + 5);
-//
-//            this.setDesenho(desenhoAux);
-//            return true;
-//        }else
-//            return false;
-//    }
-
     //printa o desenho do veiculo
     public abstract void geraDesenho();
 
@@ -87,13 +66,7 @@ public abstract class Veiculo implements Serializable{
         for(int i = 0; i<this.getQuantidadeRodas(); i++){
             aux += "Roda "+(i+1)+": "+this.rodas[i].toString()+"\n";
         }
-//        if(this.isIpva())
-//            aux += "Ipva esta pago";
-//        else
-//            aux += "Ipva nao esta pago";
-
-//        aux += "\nCombustivel no tanque: " +this.getCombustivel()+"L"+ "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos\n";
-
+        aux += "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos\n";
         return aux;
     }
 
@@ -152,5 +125,9 @@ public abstract class Veiculo implements Serializable{
 
     public void setMovimento(int movimento) {
         this.movimento = movimento;
+    }
+
+    public void setRodas(Roda[] rodas) {
+        this.rodas = rodas;
     }
 }

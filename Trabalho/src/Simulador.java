@@ -49,13 +49,45 @@ public class Simulador implements Serializable{
     public void calibraPneu(int idC,int idP){
         if(idC == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
-        }else if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
-            System.out.println("Pneu Inexistente! Tente novamente\n");
-        }else{
-            this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(true);
-            System.out.println("O pneu " + idP + ", do carro " + (idC+1) + " esta calibrado!");
+        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+            if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
+                System.out.println("Pneu Inexistente! Tente novamente\n");
+            }else{
+                this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(true);
+                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
+            }
+        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+            if(idP != 1 && idP != 2){
+                System.out.println("Pneu Inexistente! Tente novamente\n");
+            }else{
+                this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(true);
+                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
+            }
         }
     }
+
+    //esvazia o pneu
+    public void descalibraPneu(int idC,int idP){
+
+        if(idC == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+            if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
+                System.out.println("Pneu Inexistente! Tente novamente\n");
+            }else{
+                this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(false);
+                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
+            }
+        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+            if(idP != 1 && idP != 2){
+                System.out.println("Pneu Inexistente! Tente novamente\n");
+            }else{
+                this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(false);
+                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
+            }
+        }
+    }
+
 
     //calibra os pneus de um veiculos
     public void calibraPneu(int id){
@@ -71,6 +103,20 @@ public class Simulador implements Serializable{
         }
     }
 
+    //esvazia os pneus de um veiculos
+    public void descalibraPneu(int id){
+        if(id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else{
+            for (int i = 1; i <= this.veiculos[id].getQuantidadeRodas(); i++) {
+                if(this.veiculos[id].getRodas()[i-1].isCalibragemPneu()) {
+                    this.descalibraPneu(id, i);
+                }
+            }
+            System.out.println("Todos os pneus do carro " + (id+1) + " foram esvaziados\n");
+        }
+    }
+
     //calibra todos os pneus de todos os veiculos
     public void calibraPneu() {
         for (int i = 0; i < this.getQtidVeiculos(); i++) {
@@ -81,6 +127,121 @@ public class Simulador implements Serializable{
             }
         }
         System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
+    }
+
+    //esvazia todos os pneus de todos os veiculos
+    public void descalibraPneu() {
+        for (int i = 0; i < this.getQtidVeiculos(); i++) {
+            for (int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++) {
+                if(this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                    this.descalibraPneu(i, j);
+                }
+            }
+        }
+        System.out.println("\nTodos os pneus de todos os carros foram esvaziados\n");
+    }
+
+    //calibra todos os pneus de todos os veiculos de um tipo especifico
+    public void calibraTipo(char c){
+        if(c == 'B' || c == 'b'){
+            for (int i = 0; i < this.getQtidVeiculos(); i++) {
+                if(this.veiculos[i] instanceof  Bicicleta){
+                    for (int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++) {
+                        if(!this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.calibraPneu(i, j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todas as bicicletas foram calibrados");
+        }else if(c == 'M' || c == 'm'){
+            for(int i = 0; i < this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof Motocicleta){
+                    for(int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++){
+                        if(!this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.calibraPneu(i,j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todas as motocicletas foram calibrados");
+        }else if(c == 'C' || c == 'c'){
+            for(int i = 0; i < this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof CarroPasseio){
+                    for(int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++){
+                        if(!this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.calibraPneu(i,j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todos os Carros de Passeio foram calibrados");
+
+        }else if(c == 'E' || c == 'e'){
+            for(int i = 0; i < this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof CarroEsportivo){
+                    for(int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++){
+                        if(!this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.calibraPneu(i,j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todos os Carros Esportivos foram calibrados");
+        }
+
+    }
+
+    //esvazia todos os pneus de todos os veiculos de um tipo especifico
+
+    public void descalibraTipo(char c){
+        if(c == 'B' || c == 'b'){
+            for (int i = 0; i < this.getQtidVeiculos(); i++) {
+                if(this.veiculos[i] instanceof  Bicicleta){
+                    for (int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++) {
+                        if(this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.descalibraPneu(i, j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todas as bicicletas foram esvaziados");
+        }else if(c == 'M' || c == 'm'){
+            for(int i = 0; i < this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof Motocicleta){
+                    for(int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++){
+                        if(this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.descalibraPneu(i,j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todas as motocicletas foram esvaziados");
+        }else if(c == 'C' || c == 'c'){
+            for(int i = 0; i < this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof CarroPasseio){
+                    for(int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++){
+                        if(this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.descalibraPneu(i,j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todos os Carros de Passeio foram esvaziados");
+
+        }else if(c == 'E' || c == 'e'){
+            for(int i = 0; i < this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof CarroEsportivo){
+                    for(int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++){
+                        if(this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
+                            this.descalibraPneu(i,j);
+                        }
+                    }
+                }
+            }
+            System.out.println("Todos os pneus de todos os Carros Esportivos foram esvaziados");
+        }
+
     }
 
     //paga o IPVA de um veiculo especifico
@@ -129,7 +290,7 @@ public class Simulador implements Serializable{
             if(this.veiculos[id] instanceof Bicicleta){
 
             }else{
-                this.veiculos[id].getClass().setCombustivel(this.veiculos[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
+                this.veiculos[id].setCombustivel(this.veiculos[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
                 System.out.printf("\nO veiculo com o id: " + (id+1) + " esta com  %.2f L de combustivel no tanque\n",(float) this.veiculos[id].getCombustivel());
             }
         }

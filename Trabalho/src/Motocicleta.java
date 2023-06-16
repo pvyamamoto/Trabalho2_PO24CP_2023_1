@@ -35,7 +35,7 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
             }
             String[] desenhoAux = this.getDesenho();
             for(int i = 0; i<this.getDesenho().length; i++){
-                desenhoAux[i] = "          "+desenhoAux[i];
+                desenhoAux[i] = "   "+desenhoAux[i];
             }
             this.setCombustivel(this.getCombustivel() - 0.25);
             this.setDistanciaPercorrida(this.getDistanciaPercorrida() + this.getMovimento());
@@ -50,10 +50,10 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     public String toString(){
         String aux;
         if(this.isIpva()){
-            aux = "Ipva de valor R$"+this.calculaIpva()+" esta pago";
+            aux = "\nIpva de valor R$"+this.calculaIpva()+" esta pago\n";
         }
         else
-            aux = "Ipva de valor R$"+this.calculaIpva()+" nao esta pago";
+            aux = "\nIpva de valor R$"+this.calculaIpva()+" nao esta pago\n";
 
         return aux;
     }

@@ -4,9 +4,6 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     public Motocicleta(int id) {
         super(id, 2, 2, 3);
 
-        Random rd = new Random(); // gerar ipva aleatorio
-
-        this.setIpva(rd.nextBoolean());
         this.setDesenho(inicializaDesenho());
     }
 
@@ -48,8 +45,7 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     }
 
     public String toString(){
-        super.toString();
-        String aux;
+        String aux = super.toString();
 
         if(this.isIpva()){
             aux = "\nIpva de valor R$"+this.calculaIpva()+" esta pago\n";

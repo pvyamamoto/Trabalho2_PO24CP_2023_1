@@ -15,8 +15,8 @@ public abstract class Veiculo implements Serializable{
         this.desenho = new String[tamanhoDesenho];
         this.setId(id); //gera o prox ID
         this.setDistanciaPercorrida(0);
-        this.setRodas();
         this.setQuantidadeRodas(qntRodas);
+        this.setRodas();
         this.setMovimento(mov);
     }
 
@@ -102,6 +102,8 @@ public abstract class Veiculo implements Serializable{
 
     //setter da variavel rodas do veiculo
     public void setRodas(){
+        this.rodas = new Roda[this.getQuantidadeRodas()];
+
         for(int i=0;i<this.getQuantidadeRodas();i++){
             this.rodas[i] = new Roda();
         }

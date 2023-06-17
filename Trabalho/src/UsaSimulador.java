@@ -42,15 +42,7 @@ public class UsaSimulador{
                     if (simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
                         System.out.println("Qual veiculo gostaria de incluir? (B, M, C ou E)");
                         c = teclado.next().charAt(0);
-                        if(c == 'B' || c == 'b'){
-                            simulador.incluirBicicleta();
-                        }else if(c == 'M' || c == 'm'){
-                            simulador.inclueirMotocicleta();
-                        }else if(c == 'C' || c == 'c'){
-                            simulador.incluirCarroP();
-                        }else if(c == 'E' || c == 'e'){
-                            simulador.incluirCarroE();
-                        }
+                        simulador.incluirVeiculo(c);
                         System.out.println("\nO veiculo " + simulador.getVeiculos()[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado\n");
                     } else {
                         System.out.println("\nQuantidade maxima de veiculos atingida!\n");

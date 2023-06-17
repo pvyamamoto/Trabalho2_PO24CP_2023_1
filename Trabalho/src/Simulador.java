@@ -14,35 +14,26 @@ public class Simulador implements Serializable{
         return id+=1;
     }//adiciona +1 ao id
 
-    //inclui um carro passeio no array de veiculos
-    public void incluirCarroP(){
-        CarroPasseio cp = new CarroPasseio(nextId());
-        this.setVeiculos(cp, this.getQtidVeiculos());
-        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
-    }
 
-    //inclui um carro esportivo no array de veiculos
-
-    public void incluirCarroE(){
-        CarroPasseio ce = new CarroPasseio(nextId());
-        this.setVeiculos(ce, this.getQtidVeiculos());
-        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
-    }
-    //inclui uma motocicleta no array de veiculos
-
-    public void inclueirMotocicleta(){
-
-        CarroPasseio mt = new CarroPasseio(nextId());
-        this.setVeiculos(mt, this.getQtidVeiculos());
-        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
-    }
-
-    //inclui uma bicicleta no array de veiculos
-    public void incluirBicicleta(){
-
-        CarroPasseio b = new CarroPasseio(nextId());
-        this.setVeiculos(b, this.getQtidVeiculos());
-        this.setQtidVeiculos(this.getQtidVeiculos() + 1);
+    // incluir veiculo no array com base no tipo
+    public void incluirVeiculo(char c){
+        if(c == 'B' || c == 'b'){
+            Bicicleta b = new Bicicleta(nextId());
+            this.setVeiculos(b, this.getQtidVeiculos());
+            this.setQtidVeiculos(this.getQtidVeiculos() + 1);
+        }else if(c == 'M' || c == 'm'){
+            Motocicleta mt = new Motocicleta(nextId());
+            this.setVeiculos(mt, this.getQtidVeiculos());
+            this.setQtidVeiculos(this.getQtidVeiculos() + 1);
+        }else if(c == 'C' || c == 'c'){
+            CarroPasseio cp = new CarroPasseio(nextId());
+            this.setVeiculos(cp, this.getQtidVeiculos());
+            this.setQtidVeiculos(this.getQtidVeiculos() + 1);
+        }else if(c == 'E' || c == 'e'){
+            CarroEsportivo ce = new CarroEsportivo(nextId());
+            this.setVeiculos(ce, this.getQtidVeiculos());
+            this.setQtidVeiculos(this.getQtidVeiculos() + 1);
+        }
     }
 
     //calibra um pneu de um veiculo especifico
@@ -252,7 +243,7 @@ public class Simulador implements Serializable{
             if( this.veiculos[id] instanceof Bicicleta){
                 System.out.println("Bicicleta não possui IPVA");
             }else{
-                this.veiculos[this.getVeiculoPos(id)].setIpva(true);
+                ((VeiculoMotorizado)this.veiculos[this.getVeiculoPos(id)]).setIpva(true);
                 System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
             }
         }
@@ -261,9 +252,9 @@ public class Simulador implements Serializable{
     public void pagaIPVA(){
         for(int i =0;i<this.getQtidVeiculos();i++){
             if( this.veiculos[id] instanceof Bicicleta){
-
+                System.out.println("Bicicleta não possui IPVA");
             }else{
-                this.veiculos[i].setIpva(true);
+                ((VeiculoMotorizado)veiculos[i]).setIpva(true);
             }
         }
     }
@@ -288,10 +279,10 @@ public class Simulador implements Serializable{
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
             if(this.veiculos[id] instanceof Bicicleta){
-
+                System.out.println("Bicicleta não necessita gasolina\n");
             }else{
-                this.veiculos[id].setCombustivel(this.veiculos[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
-                System.out.printf("\nO veiculo com o id: " + (id+1) + " esta com  %.2f L de combustivel no tanque\n",(float) this.veiculos[id].getCombustivel());
+                ((VeiculoMotorizado)this.veiculos[id]).setCombustivel(((VeiculoMotorizado)this.veiculos[id]).getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
+                System.out.printf("\nO veiculo com o id: " + (id+1) + " esta com  %.2f L de combustivel no tanque\n",(float) ((VeiculoMotorizado)this.veiculos[id]).getCombustivel());
             }
         }
     }

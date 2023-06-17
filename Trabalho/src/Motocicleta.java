@@ -48,7 +48,9 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     }
 
     public String toString(){
+        super.toString();
         String aux;
+
         if(this.isIpva()){
             aux = "\nIpva de valor R$"+this.calculaIpva()+" esta pago\n";
         }

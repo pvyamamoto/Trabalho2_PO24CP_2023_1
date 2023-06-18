@@ -113,7 +113,7 @@ public class UsaSimulador{
                     }
                     break;
                 case 10:
-                    System.out.println("\nOs carros sao os seguintes:\n");
+                    System.out.println("\nOs veiculos sao os seguintes:\n");
                     for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }

@@ -20,10 +20,7 @@ public abstract class VeiculoMotorizado extends Veiculo{
 
         return aux;
     }
-    public boolean mover() {
-        return false;
-    }
-
+    public abstract boolean mover();
     public boolean isIpva() {
         return ipva;
     }

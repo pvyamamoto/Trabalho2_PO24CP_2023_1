@@ -47,13 +47,14 @@ public class CarroPasseio extends VeiculoMotorizado implements IPVA{
     }
 
     public String toString(){
-        String aux = super.toString();
+        String aux;
+        aux = super.toString();
 
         if(this.isIpva()){
-            aux = "\nIpva de valor R$"+this.calculaIpva()+" esta pago\n";
+            aux += "\nIpva de valor R$"+this.calculaIpva()+" esta pago\n";
         }
         else
-            aux = "\nIpva de valor R$"+this.calculaIpva()+" nao esta pago\n";
+            aux += "\nIpva de valor R$"+this.calculaIpva()+" nao esta pago\n";
 
         return aux;
     }

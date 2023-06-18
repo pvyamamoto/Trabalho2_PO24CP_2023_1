@@ -39,13 +39,18 @@ public class UsaSimulador{
 
             switch(opcao) {
                 case 1:
-                    if (simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
-                        System.out.println("Qual veiculo gostaria de incluir? (B, M, C ou E)");
-                        c = teclado.next().charAt(0);
-                        simulador.incluirVeiculo(c);
-                        System.out.println("\nO veiculo " + simulador.getVeiculos()[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado\n");
-                    } else {
-                        System.out.println("\nQuantidade maxima de veiculos atingida!\n");
+                    if(simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
+                        do{
+                            System.out.println("Qual veiculo gostaria de incluir? (B, M, C ou E)");
+                            c = teclado.next().charAt(0);
+                            if(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e')
+                                System.out.println("Informe um caractere valido!\n");
+                            else
+                                simulador.incluirVeiculo(c);
+                        }while(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e');
+                        System.out.println("\nO veiculo " + simulador.getVeiculos()[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado!");
+                    }else{
+                        System.out.println("\nQuantidade maxima de veiculos atingida!");
                     }
                     break;
                 case 2:
@@ -67,7 +72,7 @@ public class UsaSimulador{
                     break;
                 case 5:
                     simulador.pagaIPVA();
-                    System.out.println("\nOs IPVA de todos os veiculos estao pagos!\n");
+                    System.out.println("\nOs IPVA de todos os veiculos estao pagos!");
                     break;
                 case 6:
                     System.out.println("Informe o id do veiculo que voce deseja movimentar:");
@@ -76,7 +81,7 @@ public class UsaSimulador{
                     break;
                 case 7:
                     simulador.mover();
-                    System.out.println("\nTodos os veiculos foram movidos!\n");
+                    System.out.println("\nTodos os veiculos foram movidos!");
                     break;
                 case 8:
                     System.out.println("Informe o id do veiculo que voce deseja saber os dados:");
@@ -187,7 +192,7 @@ public class UsaSimulador{
                         oos.close();
                         fos.close();
 
-                        System.out.println("\nOs veiculos foram gravados.\n");
+                        System.out.println("\nOs veiculos foram gravados.");
                     }catch(Exception ex){
                         System.err.println("erro: "+ ex);
                     }
@@ -207,7 +212,7 @@ public class UsaSimulador{
 
                         oin.close();
                         fin.close();
-                        System.out.println("\nSucesso na leitura.\n");
+                        System.out.println("\nSucesso na leitura.");
                     }catch(Exception ex){
                         System.err.println("erro: "+ex);
                     }

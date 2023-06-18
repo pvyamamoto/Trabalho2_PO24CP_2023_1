@@ -94,20 +94,6 @@ public class Simulador implements Serializable{
         }
     }
 
-    //esvazia os pneus de um veiculos
-    public void descalibraPneu(int id){
-        if(id == -1){
-            System.out.println("Veiculo inexistente! Tente novamente\n");
-        }else{
-            for (int i = 1; i <= this.veiculos[id].getQuantidadeRodas(); i++) {
-                if(this.veiculos[id].getRodas()[i-1].isCalibragemPneu()) {
-                    this.descalibraPneu(id, i);
-                }
-            }
-            System.out.println("Todos os pneus do carro " + (id+1) + " foram esvaziados\n");
-        }
-    }
-
     //calibra todos os pneus de todos os veiculos
     public void calibraPneu() {
         for (int i = 0; i < this.getQtidVeiculos(); i++) {
@@ -118,18 +104,6 @@ public class Simulador implements Serializable{
             }
         }
         System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
-    }
-
-    //esvazia todos os pneus de todos os veiculos
-    public void descalibraPneu() {
-        for (int i = 0; i < this.getQtidVeiculos(); i++) {
-            for (int j = 1; j <= this.veiculos[i].getQuantidadeRodas(); j++) {
-                if(this.veiculos[i].getRodas()[j-1].isCalibragemPneu()){
-                    this.descalibraPneu(i, j);
-                }
-            }
-        }
-        System.out.println("\nTodos os pneus de todos os carros foram esvaziados\n");
     }
 
     //calibra todos os pneus de todos os veiculos de um tipo especifico

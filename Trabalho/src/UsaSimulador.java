@@ -121,16 +121,24 @@ public class UsaSimulador{
                 case 11:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar o pneu:");
                     auxId = teclado.nextInt();
-                    System.out.println("Informe o pneu do carro (1-4):");
+                    if(simulador.getVeiculos()[auxId] instanceof Bicicleta || simulador.getVeiculos()[auxId] instanceof Motocicleta){
+                        System.out.println("Informe o pneu do veiculo (1-2):");
+                    }else {
+                        System.out.println("Informe o pneu do veiculo (1-4):");
+                    }
                     int pneu = teclado.nextInt();
                     simulador.calibraPneu(simulador.getVeiculoPos(auxId),pneu);
                     break;
                 case 12:
                     System.out.println("Informe o id do veiculo que voce deseja esvaziar o pneu:");
                     auxId = teclado.nextInt();
-                    System.out.println("Informe o pneu do veiculo (1-4):");
+                    if(simulador.getVeiculos()[auxId] instanceof Bicicleta || simulador.getVeiculos()[auxId] instanceof Motocicleta){
+                        System.out.println("Informe o pneu do veiculo (1-2):");
+                    }else{
+                        System.out.println("Informe o pneu do veiculo (1-4):");
+                    }
                     pneu = teclado.nextInt();
-                    simulador.calibraPneu(simulador.getVeiculoPos(auxId),pneu);
+                    simulador.descalibraPneu(simulador.getVeiculoPos(auxId),pneu);
                     break;
                 case 13:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");

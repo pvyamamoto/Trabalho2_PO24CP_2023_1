@@ -67,14 +67,14 @@ public class Simulador implements Serializable{
                 System.out.println("Pneu Inexistente! Tente novamente\n");
             }else{
                 this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(false);
-                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
+                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta esvaziado!");
             }
         }else if(this.veiculos[idC] instanceof Motocicleta || this.veiculos[idC] instanceof Bicicleta){
             if(idP != 1 && idP != 2){
                 System.out.println("Pneu Inexistente! Tente novamente\n");
             }else{
                 this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(false);
-                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
+                System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta esvaziado!");
             }
         }
     }

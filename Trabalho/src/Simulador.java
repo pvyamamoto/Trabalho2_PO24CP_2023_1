@@ -259,7 +259,7 @@ public class Simulador implements Serializable{
         }
     }
 
-    //move um veiculo 5 blocos
+    //move um veiculo
     public void mover(int id){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -274,12 +274,41 @@ public class Simulador implements Serializable{
         }
     }
 
-    //move todos os veiculos 5 blocos
+    //move todos os veiculos
     public void mover(){
         for(int i=0;i<this.getQtidVeiculos(); i++){
             this.veiculos[i].mover();
         }
 
+    }
+
+    public void moverTipo(char c){
+        if(c == 'B' || c == 'b'){
+            for(int i=0;i<this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof Bicicleta){
+                    this.veiculos[i].mover();
+                }
+            }
+
+        }else if(c == 'M' || c == 'm'){
+            for(int i=0;i<this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof Motocicleta){
+                    this.veiculos[i].mover();
+                }
+            }
+        }else if(c == 'C' || c == 'c'){
+            for(int i=0;i<this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof CarroPasseio){
+                    this.veiculos[i].mover();
+                }
+            }
+        }else if(c == 'E' || c == 'e'){
+            for(int i=0;i<this.getQtidVeiculos(); i++){
+                if(this.veiculos[i] instanceof CarroEsportivo){
+                    this.veiculos[i].mover();
+                }
+            }
+        }
     }
 
     //imprime a pista

@@ -20,20 +20,21 @@ public class UsaSimulador{
             System.out.println("4 - Paga IPVA de um veiculo");
             System.out.println("5 - Paga IPVA de todos os veiculos");
             System.out.println("6 - Movimentar um Veiculo");
-            System.out.println("7 - Movimentar Todos os Veiculos");
-            System.out.println("8 - Imprimir Dados de um Veiculo");
-            System.out.println("9 - Imprimir os Dados de um Tipo de Veiculo");
-            System.out.println("10 - Imprimir Dados de todos os Veiculos");
-            System.out.println("11 - Calibrar Pneu Especifico");
-            System.out.println("12 - Esvaziar Pneu Especifico");
-            System.out.println("13 - Calibrar Todos os Pneus de um Carro");
-            System.out.println("14 - Calibrar Todos os Pneus de um Tipo de Veiculo");
-            System.out.println("15 - Esvaziar Todos os Pneus de um Tipo de Veiculo");
-            System.out.println("16 - Calibrar Todos os Pneus de Todos os Veiculos");
-            System.out.println("17 - Imprimir Pista de Corrida");
-            System.out.println("18 - Gravar Veiculos em um Arquivo");
-            System.out.println("19 - Ler Veiculos em um Arquivo");
-            System.out.println("20 - Sair da Aplicacao");
+            System.out.println("7 - Movimentar Veiculos por Tipo");
+            System.out.println("8 - Movimentar Todos os Veiculos");
+            System.out.println("9 - Imprimir Dados de um Veiculo");
+            System.out.println("10 - Imprimir os Dados de um Tipo de Veiculo");
+            System.out.println("11 - Imprimir Dados de todos os Veiculos");
+            System.out.println("12 - Calibrar Pneu Especifico");
+            System.out.println("13 - Esvaziar Pneu Especifico");
+            System.out.println("14 - Calibrar Todos os Pneus de um Carro");
+            System.out.println("15 - Calibrar Todos os Pneus de um Tipo de Veiculo");
+            System.out.println("16 - Esvaziar Todos os Pneus de um Tipo de Veiculo");
+            System.out.println("17 - Calibrar Todos os Pneus de Todos os Veiculos");
+            System.out.println("18 - Imprimir Pista de Corrida");
+            System.out.println("19 - Gravar Veiculos em um Arquivo");
+            System.out.println("20 - Ler Veiculos em um Arquivo");
+            System.out.println("21 - Sair da Aplicacao");
 
             opcao = teclado.nextInt();
 
@@ -80,53 +81,49 @@ public class UsaSimulador{
                     simulador.mover(simulador.getVeiculoPos(auxId));
                     break;
                 case 7:
+                    do{
+                        System.out.println("Qual tipo veiculo gostaria de movimentar? (B, M, C ou E)");
+                        c = teclado.next().charAt(0);
+                        if(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e')
+                            System.out.println("Informe um caractere valido!\n");
+                        else
+                            simulador.moverTipo(c);
+                    }while(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e');
+                    break;
+                case 8:
                     simulador.mover();
                     System.out.println("\nTodos os veiculos foram movidos!");
                     break;
-                case 8:
+                case 9:
                     System.out.println("Informe o id do veiculo que voce deseja saber os dados:");
                     auxId = teclado.nextInt();
                     System.out.println(simulador.toString(simulador.getVeiculoPos(auxId)));
                     break;
-                case 9:
-                    System.out.println("Informe o tipo de veiculo que voce deseja saber os dados:");
-                    c = teclado.next().charAt(0);
-                    if(c == 'B' || c == 'b'){
-                        for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
+                case 10:
+
+                    do{
+                        System.out.println("Informe o tipo de veiculo que voce deseja saber os dados:  (B, M, C ou E)");
+                        c = teclado.next().charAt(0);
+                        if(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e')
+                            System.out.println("Informe um caractere valido!\n");
+                        else
+                            for(int i = 0; i < simulador.getQtidVeiculos(); i++) {
                             if(simulador.getVeiculos()[i] instanceof Bicicleta){
                                 System.out.println(simulador.getVeiculos()[i].toString());
                             }
                         }
-                    }else if(c == 'M' || c == 'm'){
-                        for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
-                            if(simulador.getVeiculos()[i] instanceof Motocicleta){
-                                System.out.println(simulador.getVeiculos()[i].toString());
-                            }
-                        }
-                    }else if(c == 'C' || c == 'c'){
-                        for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
-                            if(simulador.getVeiculos()[i] instanceof CarroPasseio){
-                                System.out.println(simulador.getVeiculos()[i].toString());
-                            }
-                        }
-                    }else if(c == 'E' || c == 'e'){
-                        for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
-                            if(simulador.getVeiculos()[i] instanceof CarroEsportivo){
-                                System.out.println(simulador.getVeiculos()[i].toString());
-                            }
-                        }
-                    }
+                    }while(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e');
                     break;
-                case 10:
+                case 11:
                     System.out.println("\nOs veiculos sao os seguintes:");
                     for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }
                     break;
-                case 11:
+                case 12:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar o pneu:");
                     auxId = teclado.nextInt();
-                    if(simulador.getVeiculos()[auxId] instanceof Bicicleta || simulador.getVeiculos()[auxId] instanceof Motocicleta){
+                    if(simulador.getVeiculos()[simulador.getVeiculoPos(auxId)] instanceof Bicicleta || simulador.getVeiculos()[simulador.getVeiculoPos(auxId)] instanceof Motocicleta){
                         System.out.println("Informe o pneu do veiculo (1-2):");
                     }else {
                         System.out.println("Informe o pneu do veiculo (1-4):");
@@ -134,10 +131,10 @@ public class UsaSimulador{
                     int pneu = teclado.nextInt();
                     simulador.calibraPneu(simulador.getVeiculoPos(auxId),pneu);
                     break;
-                case 12:
+                case 13:
                     System.out.println("Informe o id do veiculo que voce deseja esvaziar o pneu:");
                     auxId = teclado.nextInt();
-                    if(simulador.getVeiculos()[auxId] instanceof Bicicleta || simulador.getVeiculos()[auxId] instanceof Motocicleta){
+                    if(simulador.getVeiculos()[simulador.getVeiculoPos(auxId)] instanceof Bicicleta || simulador.getVeiculos()[simulador.getVeiculoPos(auxId)] instanceof Motocicleta){
                         System.out.println("Informe o pneu do veiculo (1-2):");
                     }else{
                         System.out.println("Informe o pneu do veiculo (1-4):");
@@ -145,44 +142,39 @@ public class UsaSimulador{
                     pneu = teclado.nextInt();
                     simulador.descalibraPneu(simulador.getVeiculoPos(auxId),pneu);
                     break;
-                case 13:
+                case 14:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");
                     auxId = teclado.nextInt();
                     simulador.calibraPneu(simulador.getVeiculoPos(auxId));
                     break;
-                case 14:
-                    System.out.println("Informe o tipo de veiculo que voce deseja calibrar os pneus:");
-                    c = teclado.next().charAt(0);
-                    if(c == 'B' || c == 'b'){
-                        simulador.calibraTipo(c);
-                    }else if(c == 'M' || c == 'm'){
-                        simulador.calibraTipo(c);
-                    }else if(c == 'C' || c == 'c'){
-                        simulador.calibraTipo(c);
-                    }else if(c == 'E' || c == 'e'){
-                        simulador.calibraTipo(c);
-                    }
-                    break;
                 case 15:
-                    System.out.println("Informe o tipo de veiculo que voce deseja esvaziar os pneus:");
-                    c = teclado.next().charAt(0);
-                    if(c == 'B' || c == 'b'){
-                        simulador.descalibraTipo(c);
-                    }else if(c == 'M' || c == 'm'){
-                        simulador.descalibraTipo(c);
-                    }else if(c == 'C' || c == 'c'){
-                        simulador.descalibraTipo(c);
-                    }else if(c == 'E' || c == 'e'){
-                        simulador.descalibraTipo(c);
-                    }
+                    do{
+                        System.out.println("Informe o tipo de veiculo que voce deseja calibrar os pneus: (B, M, C ou E)");
+                        c = teclado.next().charAt(0);
+                        if(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e')
+                            System.out.println("Informe um caractere valido!\n");
+                        else
+                            simulador.calibraTipo(c);
+                    }while(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e');
                     break;
                 case 16:
-                    simulador.calibraPneu();
+
+                    do{
+                        System.out.println("Informe o tipo de veiculo que voce deseja esvaziar os pneus: (B, M, C ou E)");
+                        c = teclado.next().charAt(0);
+                        if(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e')
+                            System.out.println("Informe um caractere valido!\n");
+                        else
+                            simulador.descalibraTipo(c);
+                    }while(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e');
                     break;
                 case 17:
-                    simulador.imprimirPista();
+                    simulador.calibraPneu();
                     break;
                 case 18:
+                    simulador.imprimirPista();
+                    break;
+                case 19:
                     teclado.nextLine();
                     System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
                     String pathOut = teclado.nextLine();
@@ -205,7 +197,7 @@ public class UsaSimulador{
                         System.err.println("erro: "+ ex);
                     }
                     break;
-                case 19:
+                case 20:
                     teclado.nextLine();
                     System.out.println("Informe o caminho para ler o arquivo (formato \"C:\\caminho\\\"):");
                     String pathIn = teclado.nextLine();
@@ -225,13 +217,13 @@ public class UsaSimulador{
                         System.err.println("erro: "+ex);
                     }
                     break;
-                case 20:
+                case 21:
                     System.out.println("\nVoce saiu da aplicacao.");
                     break;
                 default:
                     System.out.println("Opcao invalida. Tente Novamente.");
             }
-        }while(opcao != 20);
+        }while(opcao != 21);
 
     }
 }

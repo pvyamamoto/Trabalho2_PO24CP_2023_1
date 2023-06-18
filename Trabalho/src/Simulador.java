@@ -214,11 +214,11 @@ public class Simulador implements Serializable{
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
-            if(this.veiculos[id] instanceof Motocicleta || this.veiculos[id] instanceof CarroPasseio || this.veiculos[id] instanceof CarroEsportivo){
+            if(this.veiculos[this.getVeiculoPos(id)] instanceof Motocicleta || this.veiculos[this.getVeiculoPos(id)] instanceof CarroPasseio || this.veiculos[this.getVeiculoPos(id)] instanceof CarroEsportivo){
                 ((VeiculoMotorizado)this.veiculos[this.getVeiculoPos(id)]).setIpva(true);
-                System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
+                System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!");
             }else{
-                System.out.println("Esse veiculo não possui IPVA!");
+                System.out.println("\nEsse veiculo não possui IPVA!");
             }
         }
     }
@@ -323,7 +323,6 @@ public class Simulador implements Serializable{
     public void setVeiculos(Veiculo[] veiculos){
         this.veiculos = veiculos;
     }
-
 
     //setter de uma posicao da variavel veiculos
     public void setVeiculos(Veiculo veiculo, int pos){

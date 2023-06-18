@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class CarroPasseio extends VeiculoMotorizado implements IPVA{
     public CarroPasseio(int id) {
         super(id, 4, 4, 5);

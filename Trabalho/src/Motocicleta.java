@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Motocicleta extends VeiculoMotorizado implements IPVA{
     public Motocicleta(int id) {
         super(id, 2, 2, 3);

@@ -40,14 +40,14 @@ public class Simulador implements Serializable{
     public void calibraPneu(int idC,int idP){
         if(idC == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
-        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+        }else if(this.veiculos[idC] instanceof CarroPasseio || this.veiculos[idC] instanceof CarroEsportivo){
             if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
                 System.out.println("Pneu Inexistente! Tente novamente\n");
             }else{
                 this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(true);
                 System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
             }
-        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+        }else if(this.veiculos[idC] instanceof Bicicleta || this.veiculos[idC] instanceof Motocicleta){
             if(idP != 1 && idP != 2){
                 System.out.println("Pneu Inexistente! Tente novamente\n");
             }else{
@@ -62,14 +62,14 @@ public class Simulador implements Serializable{
 
         if(idC == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
-        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+        }else if(this.veiculos[idC] instanceof CarroPasseio || this.veiculos[idC] instanceof CarroEsportivo){
             if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
                 System.out.println("Pneu Inexistente! Tente novamente\n");
             }else{
                 this.veiculos[idC].getRodas()[idP - 1].setCalibragemPneu(false);
                 System.out.println("O pneu " + idP + ", do veiculo " + (idC+1) + " esta calibrado!");
             }
-        }else if(this.veiculos[idC] instanceof CarroEsportivo || this.veiculos[idC] instanceof CarroEsportivo){
+        }else if(this.veiculos[idC] instanceof Motocicleta || this.veiculos[idC] instanceof Bicicleta){
             if(idP != 1 && idP != 2){
                 System.out.println("Pneu Inexistente! Tente novamente\n");
             }else{
@@ -240,20 +240,18 @@ public class Simulador implements Serializable{
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
-            if( this.veiculos[id] instanceof Bicicleta){
-                System.out.println("Bicicleta não possui IPVA");
-            }else{
+            if(this.veiculos[id] instanceof Motocicleta || this.veiculos[id] instanceof CarroPasseio || this.veiculos[id] instanceof CarroEsportivo){
                 ((VeiculoMotorizado)this.veiculos[this.getVeiculoPos(id)]).setIpva(true);
                 System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
+            }else{
+                System.out.println("Esse veiculo não possui IPVA!");
             }
         }
     }
     //paga o IPVA de todos os veiculos
     public void pagaIPVA(){
         for(int i =0;i<this.getQtidVeiculos();i++){
-            if( this.veiculos[id] instanceof Bicicleta){
-                System.out.println("Bicicleta não possui IPVA");
-            }else{
+            if(this.veiculos[i] instanceof Motocicleta || this.veiculos[i] instanceof CarroPasseio || this.veiculos[i] instanceof CarroEsportivo){
                 ((VeiculoMotorizado)veiculos[i]).setIpva(true);
             }
         }

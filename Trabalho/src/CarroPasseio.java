@@ -12,10 +12,10 @@ public class CarroPasseio extends VeiculoMotorizado implements IPVA{
     public String[] inicializaDesenho(){
         String[] desenho = new String[4];
 
-        desenho[0] = "    ____\n";
-        desenho[1] = " __/  |_ \\_\n";
-        desenho[2] = "|  _     _``-.\n";
-        desenho[3] = "'-(_)---(_)--'\n\n\n";
+        desenho[0] = "    ____";
+        desenho[1] = " __/  |_ \\_";
+        desenho[2] = "|  _     _``-.";
+        desenho[3] = "'-(_)---(_)--'";
 
         return desenho;
     }

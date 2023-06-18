@@ -8,7 +8,7 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     }
 
     public String[] inicializaDesenho(){
-        String[] desenho = new String[4];
+        String[] desenho = new String[3];
 
         desenho[0] = "   ,_oo\n";
         desenho[1] = ".-/c-//::  \n";

@@ -62,11 +62,11 @@ public abstract class Veiculo implements Serializable{
     //sobrecarga da funcao toString na classe veiculo, onde printa todas as informacoes sobre o veiculo
     public String toString(){
         String aux;
-        aux = "Id: "+this.getId()+"\nQuantidade de rodas: "+this.getQuantidadeRodas()+"\n";
+        aux = "\nId: "+this.getId()+"\n-Quantidade de rodas: "+this.getQuantidadeRodas()+"\n";
         for(int i = 0; i<this.getQuantidadeRodas(); i++){
-            aux += "Roda "+(i+1)+": "+this.rodas[i].toString()+"\n";
+            aux += "->Roda "+(i+1)+": "+this.rodas[i].toString()+"\n";
         }
-        aux += "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos\n";
+        aux += "-Distancia percorrida: "+this.distanciaPercorrida+" blocos";
         return aux;
     }
 

@@ -12,8 +12,8 @@ public class UsaSimulador{
 
 
         do{
-            System.out.println(" =====        Menu        ====== ");
-            System.out.println(" ===== Escolha uma Opcao Abaixo ====== ");
+            System.out.println("\n=====           Menu           ======");
+            System.out.println("===== Escolha uma Opcao Abaixo ======");
             System.out.println("1 - Incluir Veiculo");
             System.out.println("2 - Remover Veiculo");
             System.out.println("3 - Abastecer Veiculo");
@@ -113,7 +113,7 @@ public class UsaSimulador{
                     }
                     break;
                 case 10:
-                    System.out.println("\nOs veiculos sao os seguintes:\n");
+                    System.out.println("\nOs veiculos sao os seguintes:");
                     for (int i = 0; i < simulador.getQtidVeiculos(); i++) {
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }

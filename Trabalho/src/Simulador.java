@@ -364,7 +364,7 @@ public class Simulador implements Serializable{
     //funcao para achar um veiculo especifico na array de veiculos
     public int getVeiculoPos(int id){
         for(int i = 0; i<this.getQtidVeiculos(); i++) {
-            if(veiculos[i].getId() == id)
+            if(this.veiculos[i].getId() == id)
                 return i;
         }
 

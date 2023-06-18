@@ -13,9 +13,10 @@ public abstract class VeiculoMotorizado extends Veiculo{
     }
 
     public String toString(){
-        String aux = super.toString();
+        String aux;
+        aux = super.toString();
 
-        aux = "\nCombustivel no tanque: " +this.getCombustivel()+"L";
+        aux += "\nCombustivel no tanque: " +this.getCombustivel()+"L";
 
         return aux;
     }

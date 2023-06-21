@@ -106,11 +106,31 @@ public class UsaSimulador{
                         c = teclado.next().charAt(0);
                         if(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e')
                             System.out.println("Informe um caractere valido!\n");
-                        else
-                            for(int i = 0; i < simulador.getQtidVeiculos(); i++) {
-                            if(simulador.getVeiculos()[i] instanceof Bicicleta){
-                                System.out.println(simulador.getVeiculos()[i].toString());
-                            }
+                        else {
+                            if(c == 'B' || c == 'b')
+                                for(int i = 0; i < simulador.getQtidVeiculos(); i++) {
+                                    if (simulador.getVeiculos()[i] instanceof Bicicleta) {
+                                        System.out.println(simulador.getVeiculos()[i].toString());
+                                    }
+                                }
+                            else if(c == 'M' || c == 'm')
+                                for(int i = 0; i < simulador.getQtidVeiculos(); i++) {
+                                    if (simulador.getVeiculos()[i] instanceof Motocicleta) {
+                                        System.out.println(simulador.getVeiculos()[i].toString());
+                                    }
+                                }
+                            else if(c == 'C' || c == 'c')
+                                for(int i = 0; i < simulador.getQtidVeiculos(); i++) {
+                                    if (simulador.getVeiculos()[i] instanceof CarroPasseio) {
+                                        System.out.println(simulador.getVeiculos()[i].toString());
+                                    }
+                                }
+                            else
+                                for(int i = 0; i < simulador.getQtidVeiculos(); i++) {
+                                    if (simulador.getVeiculos()[i] instanceof CarroEsportivo) {
+                                        System.out.println(simulador.getVeiculos()[i].toString());
+                                    }
+                                }
                         }
                     }while(c != 'B' && c != 'b' && c != 'M' && c != 'm' && c != 'C' && c != 'c' && c != 'E' && c != 'e');
                     break;
